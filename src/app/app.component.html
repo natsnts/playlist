@@ -1,0 +1,43 @@
+<div class="container">
+  <h1>Playlist de Nat</h1>
+  <form (ngSubmit)="salvarMusica()">
+    <div class="form">
+      <input type="text" [(ngModel)]="novaMusica.id" name="id" placeholder="ID (automático)" readonly>
+      <input type="text" [(ngModel)]="novaMusica.musica" name="musica" placeholder="Música" required>
+      <input type="text" [(ngModel)]="novaMusica.artista" name="artista" placeholder="Artista" required>
+      <button type="submit">{{ editando ? 'Salvar' : 'Adicionar' }}</button>
+      @if (editando) {
+        <button type="button" (click)="resetForm()">Cancelar</button>
+      }
+    </div>
+    <p class="status">{{ formStatus }}</p>
+  </form>
+  @if (playlist.length > 0) {
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Música</th>
+          <th>Artista</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of playlist; track item.id) {
+          <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.musica }}</td>
+            <td>{{ item.artista }}</td>
+            <td>
+              <button (click)="editarMusica(item)">Editar</button>
+              <button (click)="removerMusica(item.id)">Remover</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+  @if (playlist.length === 0) {
+    <p>Nenhuma música na playlist ainda.</p>
+  }
+</div>
