@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
     }
 
     if (this.editando) {
-      this.http.put('${this.apiUrl}/${this.novaMusica.id}', this.novaMusica).subscribe({
+      this.http.put(`${this.apiUrl}/${this.novaMusica.id}`, this.novaMusica).subscribe({
         next: (response: any) => {
           this.formStatus = response.success || 'Música editada com sucesso';
           this.carregarPlaylist();
@@ -85,7 +85,7 @@ export class AppComponent implements OnInit {
   }
 
   removerMusica(id: number) {
-    this.http.delete('${this.apiUrl}/${id}').subscribe({
+    this.http.delete(`${this.apiUrl}/${id}`).subscribe({
       next: (response: any) => {
         this.formStatus = response.success || 'Música removida com sucesso';
         this.carregarPlaylist();
