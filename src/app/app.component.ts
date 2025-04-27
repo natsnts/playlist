@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  standalone: true,
+  standalone: true, //sempre verificar o standalone para nao acabar dando algum erro posteriormente
   imports: [
     CommonModule,
     FormsModule,
